@@ -1,0 +1,131 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.css';
+@import '~material-icons/iconfont/material-icons.css';
+/* // @import '~font-awesome/css/font-awesome.min.css'; */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  /* background: rgb(31,49,73);
+background: linear-gradient(190deg, rgba(31,49,73,1) 0%, rgba(244,244,238,1) 100%, rgba(233,236,237,1) 100%); */
+  /* //background: #94a2af !important; */
+  /* background-image: url("assets/images/helping-hands-8.17.12.jpg"); */
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+  /**
+   * Applied via [ngClass] if not logged in
+   */
+  .fr_backgroundImageSolid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: auto;
+    width: 100%; 
+    display: block;
+  }
+  /**
+  * Applied via [ngClass] if logged in
+  */
+  .fr_backgroundImageOpacity {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.1;
+    filter: alpha(opacity=0.1);
+    max-width: 100%;
+    width: 100%; 
+    display: block;
+  }
+}
+
+/* Smaller devices (tablets, 768px and up) */
+@media (max-width: 767px) { 
+  /* gradient repeats see https://stackoverflow.com/q/16841323/344050 */
+  body {
+    background: rgb(31,49,73);
+    background: linear-gradient(190deg, rgba(31,49,73,1) 0%, rgba(244,244,238,1) 100%, rgba(233,236,237,1) 100%);
+    /* display: inline-block; */
+  }
+  /**
+   * Applied via [ngClass] if not logged in
+   */
+  .fr_backgroundImageSolid {
+    display: none;
+  }
+  /**
+  * Applied via [ngClass] if logged in
+  */
+  .fr_backgroundImageOpacity {
+    display: none;
+  }
+}
+
+.fr_tag_line {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.5em;
+  /* z-index: 2; */
+}
+
+.fr_angular_logo {
+  width: 20%;
+  z-index: 1;
+}
+.fr_original_logo {
+  height: 70%;
+  width: 70%;
+  z-index: 1;
+}
+
+/* .fav-form-button {
+  float: right;
+} */
+
+      /* .brand_logo_container {
+        position: absolute;
+        height: 170px;
+        width: 170px;
+        top: -75px;
+        border-radius: 50%;
+        background: #60a3bc;
+        padding: 10px;
+        text-align: center;
+      }
+      .brand_logo {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        border: 2px solid white;
+      } 
+      /* .form_container {
+       margin-top: 100px; to make space for the logo
+      } */
+      .login_btn {
+        width: 100%;
+        background: #c0392b !important;
+        color: white !important;
+      }
+      .login_btn:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+      }
+      .login_container {
+        padding: 0 2rem;
+      }
+      .input-group-text {
+        background: #c0392b !important;
+        color: white !important;
+        border: 0 !important;
+        border-radius: 0.25rem 0 0 0.25rem !important;
+      }
+      .input_user,
+      .input_pass:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+      }
+      .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+        background-color: #c0392b !important;
+      }
+

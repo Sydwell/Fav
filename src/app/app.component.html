@@ -1,0 +1,56 @@
+<div class="container-fluid" >
+
+  <!-- <img src="assets/images/helping-hands-8.17.12.jpg" style="position: absolute; top: 0; left: 0; z-index: -1;"> -->
+  <img src="assets/images/helping-hands-8.17.12.jpg"
+    [ngClass]="{ fr_backgroundImageSolid: !loggedIn,  fr_backgroundImageOpacity: loggedIn}"> 
+  <div class='row' >
+    <app-header class="offset-sm-0 offset-md-6 col-md-6 mt-4"></app-header>
+  </div>
+  <div class='row' >
+    <div  class="offset-sm-0 offset-md-6 col-md-6 col-lg-4 mt-2">
+      <ng-container *ngIf="!loggedIn"  >
+      
+      
+        <!-- <div class="col-sm-6">
+          &nbsp;
+        </div> -->
+        <!-- <div class="col-sm"> -->
+          <ng-container *ngIf="showLogin"   >
+            <app-login (loginEvent)="authEvent($event);" ></app-login>
+          </ng-container>
+          <ng-container *ngIf="showRegistration">
+            <app-registration (registrationEvent)="authEvent($event);"></app-registration>
+          </ng-container>
+          <ng-container *ngIf="showRecover">
+            <app-recover (recoverEvent)="authEvent($event);"></app-recover>
+          </ng-container>
+        <!-- </div> -->
+        <!-- <div class="col-sm">
+          &nbsp;
+        </div> -->
+      </ng-container>
+    </div>
+    
+
+  </div>
+  <ng-container *ngIf="loggedIn">
+    <app-menu (menuEvent)="menuProcessEvent($event);"> </app-menu>
+    <div [ngSwitch]="showMenu">
+      <div *ngSwitchCase="'how'">
+        <app-how></app-how>
+      </div>
+      <div *ngSwitchCase="'favour'">
+        <app-favour></app-favour>
+      </div>
+      <div *ngSwitchCase="'ask'">
+        <app-ask></app-ask>
+      </div>
+      <div *ngSwitchCase="'answer'">
+        <app-answer></app-answer>
+      </div>
+      <div *ngSwitchCase="'profile'">
+        <app-profile-new></app-profile-new>
+      </div>
+    </div>
+  </ng-container>
+</div>

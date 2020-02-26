@@ -1,0 +1,31 @@
+<form [formGroup]="recoverForm" (ngSubmit)="onRecoverSubmit()">
+  <!-- <div class="user_card">
+    <div class="d-flex justify-content-center form_container"> -->
+      <div class="input-group mb-3 mr-3 mt-3">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fa fa-mobile"></i></span>
+        </div>
+        <input type="text" formControlName="mobileNumber" class="form-control input_user" value="" placeholder="Mobile Number">
+      </div>
+      <h1>OR</h1>
+      <div class="input-group mb-3 mr-3">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="fa fa-mail"></i></span>
+        </div>
+        <input type="password" formControlName="emailAddress" class="form-control input_pass" value="" placeholder="Email Address">
+      </div>
+
+
+
+      <button type="submit" name="button" class="btn login_btn">Login </button>
+
+    <div class="mt-4">
+      <div class="d-flex justify-content-center links">
+        Don't have an account? <a href="#" class="ml-2" (click)='signUpClick();'>Sign Up</a>
+      </div>
+      <div class="d-flex justify-content-center links" (click)='loginClick();'>
+        <a href="#">Try and login again?</a>
+      </div>
+    </div>
+  <!-- </div> -->
+</form>
