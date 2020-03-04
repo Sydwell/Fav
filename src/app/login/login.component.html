@@ -1,0 +1,81 @@
+<form [formGroup]="loginForm" (ngSubmit)="onRequestSubmit()" #formDir="ngForm">
+  <div class="form-group">
+  <h2 for="mobileNumber">Request OTP</h2>
+  <!-- <div class="user_card">
+    <h2>
+    <div class="d-flex justify-content-center form_container"> -->
+  <div class="input-group mb-3 mr-3 mt-3">
+    <!-- <div class="input-group-prepend"> -->
+      <!-- <span class="input-group-text"><i class="fa fa-mobile"></i></span> mobile_screen_share 
+            mobile_friendly phonelink_setup  -->
+      <span class="input-group-text material-icons">phone_iphone</span>
+    <!-- </div> -->
+    <input type="text" id="mobileNumber" formControlName="mobileNumber" class="form-control"
+      placeholder="Mobile Number" required appPassword >
+    
+  </div>
+
+  <div *ngIf="mobileNumber.invalid && (mobileNumber.dirty || mobileNumber.touched)" class="alert alert-danger">
+
+  <div *ngIf="mobileNumber.errors.required">
+    Mobile number is required.
+  </div>
+  
+  <div *ngIf="!mobileNumber.errors.required && mobileNumber.errors.minlength">
+    Mobile number must be 10 numbers long.
+  </div>
+  <div *ngIf="!mobileNumber.errors.required && mobileNumber.errors.maxlength">
+    Mobile number must be 10 numbers long.
+  </div>
+  <div *ngIf="!mobileNumber.errors.required && mobileNumber.errors.mustStartWithZero">
+    Mobile number must start with a 0.
+  </div>
+  <div *ngIf="!mobileNumber.errors.required && mobileNumber.errors.beANumber">
+    Mobile must be a valid number.
+  </div>
+  </div>
+  <button type="submit" name="button" class="btn login_btn" [disabled]="loginForm.invalid" >Submit Mobile No</button>
+
+  <div *ngIf="requestResponse" class="alert alert-success mt-3">
+    {{ requestResponse }}
+  </div>
+  </div>
+</form>
+
+<form [formGroup]="otpForm" (ngSubmit)="onLoginSubmit()" #formDir="ngForm">
+  <h2 class='mt-4' >Enter OTP</h2>
+  <div class="input-group mb-3 mr-3">
+    <div class="input-group-append">
+      <!-- <span class="input-group-text"><i class="fa fa-mail"></i></span> -->
+      <span class="input-group-text material-icons">check_circle</span>
+    </div>
+    <input type="text" formControlName="otps" class="form-control input_pass" value="" placeholder="otp"
+           (click)="requestInvalidOtp='';" >
+    
+  </div>
+
+
+
+  <button type="submit" name="button" class="btn login_btn" [disabled]="!requestResponse" >Login </button>
+  <div *ngIf="mobileNumber.dirty">
+    
+  </div>
+
+  <div *ngIf="requestInvalidOtp" class="alert alert-danger mt-3">
+    {{ requestInvalidOtp }}
+  </div>
+</form>
+  <!-- <div class="mt-4">
+    <div class="d-flex justify-content-center links">
+      Don't have an account? <a href="#" class="ml-2" (click)='signUpClick();'>Sign Up</a>
+    </div>
+    <div class="d-flex justify-content-center links" (click)='loginClick();'>
+      <a href="#">Try and login again?</a>
+    </div>
+  </div> -->
+  
+
+<!-- <div class="submitted-message" *ngIf="formDir.submitted">
+  <p>You've submitted your Mobile Number, {{ loginForm.value.mobileNumber }}!</p>
+  <p>An OTP will be WhatsApp to this number</p>
+</div> -->

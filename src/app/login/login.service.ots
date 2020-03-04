@@ -1,0 +1,62 @@
+import { Injectable, ChangeDetectorRef } from '@angular/core';
+
+/** DO NOT the import below as it is deprecated */
+// import { Http  } from '@angular/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+
+import * as global from '../../global';
+import { LoginUserJson } from '../../global';
+
+import { HttpHeaders } from '@angular/common/http';
+
+
+
+@Injectable()
+export class LoginService {
+
+  public constructor(private http: HttpClient) {
+  }
+
+
+  /**
+    * inserts or update certification detail
+    */
+  public doLogin(username, password): Observable<boolean> {
+    console.log(' doLogin ');
+
+    const paramBody = {
+      operation: 'login',
+      info: {'username' : username, 'password': password}
+    };
+    let query = '';
+    // tslint:disable-next-line:forin
+    for (const key in paramBody) {
+        query += key + '=' + encodeURIComponent(JSON.stringify(paramBody[key]) ) + '&';
+        // console.log('query[key] ' + JSON.stringify(paramBody[key]) + 'K' + encodeURIComponent(JSON.stringify(paramBody[key]) ) );
+    }
+    console.log (query);
+    return this.http.post(global.phpURL, query, global.postHeaders)
+      .do(data => {
+        const ff: LoginUserJson = {username: username, userId: parseInt(data.toString(), 10), jwt: 'string'};
+        global.setCurrentUser(ff);
+        console.log('login: ' + data);
+      })
+      .catch((err: Response) => {
+        console.log('Error details');
+        console.log(err);
+        return Observable.throw(err);
+      });
+  }
+
+  /**
+   * Creates a cert
+   */
+  public logout() {
+
+  }
+
+}
